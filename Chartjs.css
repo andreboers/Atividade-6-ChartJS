@@ -1,0 +1,31 @@
+body {
+    background-color: #888;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+canvas {
+    position: relative; 
+    height: 40vh; 
+    width:40vw; 
+    background-color: #fff; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    padding: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.div_graficos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-direction: column;
+    margin-left: 700px;
+    width: 500px;
+    text-align: center;
+}

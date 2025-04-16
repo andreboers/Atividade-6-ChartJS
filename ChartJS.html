@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChartJS</title>
+    <link rel="stylesheet" href="Chartjs.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <h1>Monitoramento de Temperatura e Umidade</h1>
+
+    <div class="div_graficos">
+
+        <div>
+            <canvas id="GraficoBarra"></canvas>
+        </div>
+
+        <div>
+            <canvas id="GraficoLinha"></canvas>
+        </div>
+
+        <h1>Exemplo Projeto</h1>
+
+        <div>
+            <canvas id="GraficoPizza"></canvas>
+        </div>
+
+    </div>
+
+    <script>
+
+        const labelsLinha = ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
+
+        const labelsBarra = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'];
+
+        const labelPizza = ['Renda Bruta', 'Lucro'];
+
+        const dataLinha = {
+            labels: labelsLinha,
+            datasets: [
+                {
+                    label: 'Temperatura',
+                    data: [30, 29, 28, 25, 22, 23],
+                    borderColor: 'purple',
+                    backgroundColor: 'white',
+                    yAxisID: 'y',
+                    tension: 0
+                },
+                {
+                    label: 'Umidade',
+                    data: [80, 82, 80, 85, 80, 83],
+                    borderColor: 'blue',
+                    backgroundColor: 'white',
+                    yAxisID: 'y',
+                    tension: 0
+                }
+            ]
+        };
+
+        const dataBarra = {
+            labels: labelsBarra,
+            datasets: [
+                {
+                    label: 'Temperatura Média',
+                    data: [22, 24, 27, 23, 20, 18],
+                    borderColor: 'white',
+                    backgroundColor: 'red',
+                    yAxisID: 'y',
+                    tension: 0
+                },
+                {
+                    label: 'Umidade Média',
+                    data: [90, 89, 93, 87, 88, 82],
+                    borderColor: 'white',
+                    backgroundColor: 'blue',
+                    tension: 0
+                }
+            ]
+        };
+
+        const dataPizza = {
+            labels: [
+                'Bruto',
+                'Lucro'
+            ],
+            datasets: [{
+                // Gostaria de colocar os valores em porcentagem, porém não entendi bem como funciona colocar em formato string
+                label: 'Lucro',
+                data: [68, 32],
+                backgroundColor: [
+                    'red',
+                    'green'
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const configLinha = {
+            type: 'line',
+            data: dataLinha,
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                stacked: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Gráfico de Linhas'
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Horário'
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        min: 20,
+                        max: 90,
+                        ticks: {
+                            stepSize: 10
+                        },
+                        title: {
+                            display: true,
+                        }
+                    },
+                }
+            },
+        };
+
+        const configBarra = {
+            type: 'bar',
+            data: dataBarra,
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Gráfico de Barras'
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Mês'
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            stepSize: 10
+                        },
+                        title: {
+                            display: true,
+                        }
+                    },
+                }
+            }
+        };
+
+        const configPizza = {
+            type: 'doughnut',
+            data: dataPizza,
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+            }
+        };
+
+        const GraficoLinha = new Chart(
+            document.getElementById('GraficoLinha'),
+            configLinha
+        );
+
+        const GraficoBarra = new Chart(
+            document.getElementById('GraficoBarra'),
+            configBarra
+        );
+
+        const GraficoPizza = new Chart(
+            document.getElementById('GraficoPizza'),
+            configPizza
+        );
+    </script>
+
+</body>
+
+</html>
